@@ -25,7 +25,7 @@ SECRET_KEY = 'ec&3-ve^fgyd%+i_pctl*rraqw+u(wr$idk1v3&q)!=1kx1f1)'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['35.156.228.133']
 
 
 # Application definition
@@ -83,7 +83,7 @@ WSGI_APPLICATION = 'nextvoyager.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'nextvoyager',
+        'NAME': 'nextvoyager_test',
         'USER': 'nvuser',
         'PASSWORD': 'gish1794',
         'HOST': 'localhost',
@@ -129,6 +129,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
