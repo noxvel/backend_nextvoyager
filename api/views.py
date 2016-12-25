@@ -17,10 +17,14 @@ class JSONResponse(HttpResponse):
         super(JSONResponse, self).__init__(content, **kwargs)
 
 def movie_list(request):
-    return item_list(request, 2)
+    return item_list(request, 1)
 
 def game_list(request):
-    return item_list(request, 1)
+    return item_list(request, 2)
+
+@csrf_exempt
+def item_create(request):
+    return item_list(request, 0)
 
 @csrf_exempt
 def item_list(request, type_item):
