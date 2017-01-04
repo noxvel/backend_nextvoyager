@@ -24,5 +24,4 @@ class Review(models.Model):
     text_3 = models.CharField(max_length=200)
     publish_date = models.DateTimeField(auto_now_add=True)
     item = models.ForeignKey(Item, on_delete=models.CASCADE)
-    kind = models.ForeignKey(Kind, on_delete=models.CASCADE)
 
