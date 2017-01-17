@@ -11,7 +11,7 @@ class Kind(models.Model):
 class Item(models.Model):
     title = models.CharField(max_length=70)
     rating = models.IntegerField(default=0)
-    poster_src = models.CharField(max_length=100, blank=True, default='')
+    poster_src = models.ImageField(upload_to='items_poster/', blank=True, default='')
     release_date = models.DateField('date release')
     kind = models.ForeignKey(Kind, on_delete=models.CASCADE)
 

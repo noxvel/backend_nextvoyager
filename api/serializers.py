@@ -3,7 +3,7 @@ from rest_framework import serializers
 
 
 class ItemSerializer(serializers.ModelSerializer):
-    #kind = serializers.StringRelatedField() 
+    poster_src = serializers.ImageField(allow_empty_file=True,read_only=True) 
 
     class Meta:
         model = Item
