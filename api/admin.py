@@ -6,4 +6,3 @@ from .models import Kind, Item, Review
 admin.site.register(Kind)
 admin.site.register(Item)
 admin.site.register(Review)
-

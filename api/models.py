@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 
@@ -24,4 +25,7 @@ class Review(models.Model):
     text_3 = models.CharField(max_length=200)
     publish_date = models.DateTimeField(auto_now_add=True)
     item = models.ForeignKey(Item, on_delete=models.CASCADE)
+    user = models.ForeignKey('auth.User', related_name='reviews')
 
+    def __str__(self):
+        return self.user.username

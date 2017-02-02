@@ -1,10 +1,12 @@
 from api.models import Item, Review
-from api.serializers import ItemSerializer, ReviewSerializer
+from api.serializers import ItemSerializer, ReviewSerializer, UserSerializer
+from django.contrib.auth.models import User
 from django.http import Http404
 from rest_framework import status 
 from rest_framework.views import APIView 
 from rest_framework.response import Response 
 from rest_framework import generics
+from rest_framework import permissions
 
 class ItemList(APIView):
     """
@@ -60,9 +62,19 @@ class ReviewList(generics.ListCreateAPIView):
     def get_queryset(self):
         item_id = self.kwargs['item_pk']
         return Review.objects.filter(item__id=item_id)
-
+    
+    permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
 
 
 class ReviewDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Review.objects.all()
     serializer_class = ReviewSerializer
+
+    permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
+
+##################### User ###############
+class UserListView(generics.ListAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+
+    permission_classes = (permissions.IsAuthenticated,)
